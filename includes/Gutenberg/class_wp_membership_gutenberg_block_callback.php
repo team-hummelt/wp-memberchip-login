@@ -6,7 +6,7 @@ class WP_Membership_Gutenberg_Block_Callback
     {
         isset($attributes['className']) && $attributes['className'] ? $className = 'class="' . $attributes['className'] . '"' : $className = '';
         isset($attributes['selectedMembership']) && $attributes['selectedMembership'] ? $selectedMembership = $attributes['selectedMembership'] : $selectedMembership = '';
-        isset($attributes['selectedMembership']) && $attributes['stayLoggedIn'] ? $stayLoggedIn = $attributes['stayLoggedIn'] : $stayLoggedIn = '';
+        isset($attributes['stayLoggedIn']) && $attributes['stayLoggedIn'] ? $stayLoggedIn = $attributes['stayLoggedIn'] : $stayLoggedIn = '';
 
         $memberArr = [];
         if ($selectedMembership) {

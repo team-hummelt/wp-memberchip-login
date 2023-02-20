@@ -65,7 +65,7 @@ class WP_Membership_Login_Security_Handle
     public function fn_wp_membership_security_login_wp_parse_request($wp)
     {
         global $wp;
-        if(!is_admin()) {
+        if(!is_admin() && isset($wp->query_vars['pagename'])) {
             $args = sprintf('WHERE m.active=1 and m.redirect_link="%s"', $wp->query_vars['pagename']);
             $pages = apply_filters($this->basename . '/get_membership_login', $args, false);
             if ($pages->status) {

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-02-20 12:49+0100\n"
-"PO-Revision-Date: 2023-02-20 12:49+0100\n"
+"POT-Creation-Date: 2023-02-20 23:27+0100\n"
+"PO-Revision-Date: 2023-02-20 23:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -23,140 +23,140 @@ msgstr ""
 #: admin/Ajax/class_wp_membership_admin_ajax.php:118
 #: admin/Ajax/class_wp_membership_admin_ajax.php:123
 #: admin/Ajax/class_wp_membership_admin_ajax.php:132
-#: admin/Ajax/class_wp_membership_admin_ajax.php:178
-#: admin/Ajax/class_wp_membership_admin_ajax.php:183
-#: admin/Ajax/class_wp_membership_admin_ajax.php:227
-#: admin/Ajax/class_wp_membership_admin_ajax.php:242
-#: admin/Ajax/class_wp_membership_admin_ajax.php:270
-#: admin/Ajax/class_wp_membership_admin_ajax.php:453
-#: admin/Ajax/class_wp_membership_admin_ajax.php:510
+#: admin/Ajax/class_wp_membership_admin_ajax.php:179
+#: admin/Ajax/class_wp_membership_admin_ajax.php:184
+#: admin/Ajax/class_wp_membership_admin_ajax.php:228
+#: admin/Ajax/class_wp_membership_admin_ajax.php:243
+#: admin/Ajax/class_wp_membership_admin_ajax.php:275
+#: admin/Ajax/class_wp_membership_admin_ajax.php:458
+#: admin/Ajax/class_wp_membership_admin_ajax.php:515
 msgid "Ajax transmission error."
 msgstr "Ajax Übertragungsfehler"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:193
+#: admin/Ajax/class_wp_membership_admin_ajax.php:194
 msgid "no page selected"
 msgstr "keine Seite ausgewählt"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:201
-#: admin/Ajax/class_wp_membership_admin_ajax.php:235
+#: admin/Ajax/class_wp_membership_admin_ajax.php:202
+#: admin/Ajax/class_wp_membership_admin_ajax.php:236
 msgid "There is already a share for this page."
 msgstr "Für diese Seite ist schon eine Freigabe vorhanden."
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:207
+#: admin/Ajax/class_wp_membership_admin_ajax.php:208
 msgid "no permission selected"
 msgstr "keine Berechtigung ausgewählt"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:274
+#: admin/Ajax/class_wp_membership_admin_ajax.php:279
 msgid "Entry deleted"
 msgstr "Eintrag gelöscht"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:275
+#: admin/Ajax/class_wp_membership_admin_ajax.php:280
 msgid "The entry was successfully deleted."
 msgstr "Der Eintrag wurde erfolgreich gelöscht."
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:357
-#: admin/Ajax/class_wp_membership_admin_ajax.php:364
-#: admin/Ajax/class_wp_membership_admin_ajax.php:397
-#: admin/Ajax/class_wp_membership_admin_ajax.php:422
-#: admin/Ajax/class_wp_membership_admin_ajax.php:428
+#: admin/Ajax/class_wp_membership_admin_ajax.php:362
+#: admin/Ajax/class_wp_membership_admin_ajax.php:369
+#: admin/Ajax/class_wp_membership_admin_ajax.php:402
+#: admin/Ajax/class_wp_membership_admin_ajax.php:427
+#: admin/Ajax/class_wp_membership_admin_ajax.php:433
 msgid "File not found."
 msgstr "Datei nicht gefunden."
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:440
+#: admin/Ajax/class_wp_membership_admin_ajax.php:445
 msgid "Document deleted"
 msgstr "Dokument gelöscht"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:441
+#: admin/Ajax/class_wp_membership_admin_ajax.php:446
 msgid "The document was successfully deleted."
 msgstr "Das Dokument wurde erfolgreich gelöscht."
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:458
-#: admin/Ajax/class_wp_membership_admin_ajax.php:479
-#: admin/Ajax/class_wp_membership_admin_ajax.php:696
-#: admin/trait_wp_membership_login_settings.php:146
+#: admin/Ajax/class_wp_membership_admin_ajax.php:463
+#: admin/Ajax/class_wp_membership_admin_ajax.php:484
+#: admin/Ajax/class_wp_membership_admin_ajax.php:705
+#: admin/trait_wp_membership_login_settings.php:147
 msgid "Group"
 msgstr "Gruppe"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:529
+#: admin/Ajax/class_wp_membership_admin_ajax.php:534
 msgid "The group was successfully deleted."
 msgstr "Die Gruppe wurde erfolgreich gelöscht."
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:530
+#: admin/Ajax/class_wp_membership_admin_ajax.php:535
 msgid "Group deleted"
 msgstr "Gruppe gelöscht"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:587
-#: admin/Ajax/class_wp_membership_admin_ajax.php:685
-#: admin/Ajax/class_wp_membership_admin_ajax.php:690
+#: admin/Ajax/class_wp_membership_admin_ajax.php:592
+#: admin/Ajax/class_wp_membership_admin_ajax.php:694
+#: admin/Ajax/class_wp_membership_admin_ajax.php:699
 msgid "Yes"
 msgstr "Ja"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:589
-#: admin/Ajax/class_wp_membership_admin_ajax.php:687
-#: admin/Ajax/class_wp_membership_admin_ajax.php:692
+#: admin/Ajax/class_wp_membership_admin_ajax.php:594
+#: admin/Ajax/class_wp_membership_admin_ajax.php:696
+#: admin/Ajax/class_wp_membership_admin_ajax.php:701
 msgid "No"
 msgstr "Nein"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:592
+#: admin/Ajax/class_wp_membership_admin_ajax.php:597
 msgid "none selected"
 msgstr "keine ausgewählt"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:597
-#: admin/Ajax/class_wp_membership_admin_ajax.php:696
-#: admin/trait_wp_membership_login_settings.php:101
+#: admin/Ajax/class_wp_membership_admin_ajax.php:603
+#: admin/Ajax/class_wp_membership_admin_ajax.php:705
+#: admin/trait_wp_membership_login_settings.php:102
 msgid "active"
 msgstr "aktiv"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:599
-#: admin/Ajax/class_wp_membership_admin_ajax.php:696
+#: admin/Ajax/class_wp_membership_admin_ajax.php:606
+#: admin/Ajax/class_wp_membership_admin_ajax.php:705
 msgid "not active"
 msgstr "nicht aktiv"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:610
-#: admin/Ajax/class_wp_membership_admin_ajax.php:711
-#: admin/trait_wp_membership_login_settings.php:117
-#: admin/trait_wp_membership_login_settings.php:169
+#: admin/Ajax/class_wp_membership_admin_ajax.php:619
+#: admin/Ajax/class_wp_membership_admin_ajax.php:720
+#: admin/trait_wp_membership_login_settings.php:118
+#: admin/trait_wp_membership_login_settings.php:170
 msgid "Clock"
 msgstr "Uhr"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:611
-#: admin/Ajax/class_wp_membership_admin_ajax.php:713
-#: admin/trait_wp_membership_login_settings.php:102
+#: admin/Ajax/class_wp_membership_admin_ajax.php:620
+#: admin/Ajax/class_wp_membership_admin_ajax.php:722
+#: admin/trait_wp_membership_login_settings.php:103
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:612
-#: admin/Ajax/class_wp_membership_admin_ajax.php:714
-#: admin/trait_wp_membership_login_settings.php:104
-#: admin/trait_wp_membership_login_settings.php:168
+#: admin/Ajax/class_wp_membership_admin_ajax.php:621
+#: admin/Ajax/class_wp_membership_admin_ajax.php:723
+#: admin/trait_wp_membership_login_settings.php:105
+#: admin/trait_wp_membership_login_settings.php:169
 msgid "Delete"
 msgstr "Löschen"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:685
-#: admin/Ajax/class_wp_membership_admin_ajax.php:687
-#: admin/trait_wp_membership_login_settings.php:100
+#: admin/Ajax/class_wp_membership_admin_ajax.php:694
+#: admin/Ajax/class_wp_membership_admin_ajax.php:696
+#: admin/trait_wp_membership_login_settings.php:101
 msgid "Active"
 msgstr "Aktiv"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:690
-#: admin/Ajax/class_wp_membership_admin_ajax.php:692
+#: admin/Ajax/class_wp_membership_admin_ajax.php:699
+#: admin/Ajax/class_wp_membership_admin_ajax.php:701
 msgid "Description"
 msgstr "Beschreibung"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:710
+#: admin/Ajax/class_wp_membership_admin_ajax.php:719
 #: admin/class-wp-memberchip-login-admin.php:146
 #: admin/class-wp-memberchip-login-admin.php:147
-#: admin/trait_wp_membership_login_settings.php:134
+#: admin/trait_wp_membership_login_settings.php:135
 msgid "Downloads"
 msgstr "Downloads"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:711
-#: admin/trait_wp_membership_login_settings.php:135
+#: admin/Ajax/class_wp_membership_admin_ajax.php:720
+#: admin/trait_wp_membership_login_settings.php:136
 msgid "Created"
 msgstr "Erstellt"
 
-#: admin/Ajax/class_wp_membership_admin_ajax.php:712
-#: admin/trait_wp_membership_login_settings.php:136
+#: admin/Ajax/class_wp_membership_admin_ajax.php:721
+#: admin/trait_wp_membership_login_settings.php:137
 msgid "Download"
 msgstr "Download"
 
@@ -174,14 +174,14 @@ msgstr ""
 
 #: admin/class-wp-memberchip-login-admin.php:105
 #: admin/class-wp-memberchip-login-admin.php:106
-#: admin/trait_wp_membership_login_settings.php:123
+#: admin/trait_wp_membership_login_settings.php:124
 #: includes/Gutenberg/MembershipWidget/src/index.js:64
 msgid "Members"
 msgstr "Mitglieder"
 
 #: admin/class-wp-memberchip-login-admin.php:116
 #: admin/class-wp-memberchip-login-admin.php:117
-#: admin/trait_wp_membership_login_settings.php:106
+#: admin/trait_wp_membership_login_settings.php:107
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -240,221 +240,221 @@ msgstr "Standard Dokumenten Gruppe"
 msgid "default membership"
 msgstr "Standard Mitgliedschaft"
 
-#: admin/trait_wp_membership_login_settings.php:77
+#: admin/trait_wp_membership_login_settings.php:78
 msgid "standard membership with page template"
 msgstr "Standard-Mitgliedschaft mit Seiten-Template"
 
-#: admin/trait_wp_membership_login_settings.php:103
+#: admin/trait_wp_membership_login_settings.php:104
 msgid "edit"
 msgstr "bearbeiten"
 
-#: admin/trait_wp_membership_login_settings.php:105
+#: admin/trait_wp_membership_login_settings.php:106
 msgid "delete"
 msgstr "löschen"
 
-#: admin/trait_wp_membership_login_settings.php:107
+#: admin/trait_wp_membership_login_settings.php:108
 msgid "settings"
 msgstr "Einstellungen"
 
-#: admin/trait_wp_membership_login_settings.php:108
+#: admin/trait_wp_membership_login_settings.php:109
 msgid "Overview"
 msgstr "Übersicht"
 
-#: admin/trait_wp_membership_login_settings.php:109
+#: admin/trait_wp_membership_login_settings.php:110
 msgid "back"
 msgstr "zurück"
 
-#: admin/trait_wp_membership_login_settings.php:110
+#: admin/trait_wp_membership_login_settings.php:111
 msgid "no data"
 msgstr "keine Angaben"
 
-#: admin/trait_wp_membership_login_settings.php:111
+#: admin/trait_wp_membership_login_settings.php:112
 msgid "from"
 msgstr "von"
 
-#: admin/trait_wp_membership_login_settings.php:112
+#: admin/trait_wp_membership_login_settings.php:113
 msgid "to"
 msgstr "bis"
 
-#: admin/trait_wp_membership_login_settings.php:113
+#: admin/trait_wp_membership_login_settings.php:114
 #: includes/license/partials/license-activate-product.php:86
 msgid "Save"
 msgstr "Speichern"
 
-#: admin/trait_wp_membership_login_settings.php:114
-#: admin/trait_wp_membership_login_settings.php:162
+#: admin/trait_wp_membership_login_settings.php:115
+#: admin/trait_wp_membership_login_settings.php:163
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: admin/trait_wp_membership_login_settings.php:115
+#: admin/trait_wp_membership_login_settings.php:116
 msgid "at"
 msgstr "in"
 
-#: admin/trait_wp_membership_login_settings.php:116
+#: admin/trait_wp_membership_login_settings.php:117
 msgid "Minimum requirement for plugin usage"
 msgstr "Mindestvoraussetzung für die Verwendung dieses Plugins"
 
-#: admin/trait_wp_membership_login_settings.php:118
+#: admin/trait_wp_membership_login_settings.php:119
 msgid "Help"
 msgstr "Hilfe"
 
-#: admin/trait_wp_membership_login_settings.php:119
+#: admin/trait_wp_membership_login_settings.php:120
 msgid "Plugin visibility"
 msgstr "Plugin-Sichtbarkeit"
 
-#: admin/trait_wp_membership_login_settings.php:120
+#: admin/trait_wp_membership_login_settings.php:121
 msgid "and"
 msgstr "und"
 
-#: admin/trait_wp_membership_login_settings.php:121
+#: admin/trait_wp_membership_login_settings.php:122
 msgid "Add membership"
 msgstr "Mitgliedschaft hinzufügen"
 
-#: admin/trait_wp_membership_login_settings.php:122
+#: admin/trait_wp_membership_login_settings.php:123
 msgid "Plugin settings"
 msgstr "Plugin Einstellungen"
 
-#: admin/trait_wp_membership_login_settings.php:124
+#: admin/trait_wp_membership_login_settings.php:125
 msgid "Bootstrap CSS active"
 msgstr "Bootstrap CSS aktiv"
 
-#: admin/trait_wp_membership_login_settings.php:125
+#: admin/trait_wp_membership_login_settings.php:126
 msgid "Bootstrap JS active"
 msgstr "Bootstrap JS aktiv"
 
-#: admin/trait_wp_membership_login_settings.php:126
+#: admin/trait_wp_membership_login_settings.php:127
 msgid "Show downloads in dashboard"
 msgstr "Downloads in Dashboard anzeigen"
 
-#: admin/trait_wp_membership_login_settings.php:127
+#: admin/trait_wp_membership_login_settings.php:128
 msgid "User Role Downloads (Dashboard View)"
 msgstr "Benutzerrole  Downloads (Ansicht Dashboard)"
 
-#: admin/trait_wp_membership_login_settings.php:128
+#: admin/trait_wp_membership_login_settings.php:129
 msgid "Separate MimeTypes with comma or semicolon. (e.g. pdf, jpg, png)"
 msgstr "MimeTypes mit Komma oder Semikolon trennen. (z.B. pdf, jpg, png)"
 
-#: admin/trait_wp_membership_login_settings.php:129
+#: admin/trait_wp_membership_login_settings.php:130
 msgid "Allowed documents"
 msgstr "Erlaubte Dokumente"
 
-#: admin/trait_wp_membership_login_settings.php:130
+#: admin/trait_wp_membership_login_settings.php:131
 msgid "Maximum file size (MB)"
 msgstr "max Upload Größe (MB)"
 
-#: admin/trait_wp_membership_login_settings.php:131
+#: admin/trait_wp_membership_login_settings.php:132
 msgid "File"
 msgstr "Datei"
 
-#: admin/trait_wp_membership_login_settings.php:132
+#: admin/trait_wp_membership_login_settings.php:133
 msgid "Size"
 msgstr "Größe"
 
-#: admin/trait_wp_membership_login_settings.php:133
+#: admin/trait_wp_membership_login_settings.php:134
 msgid "Type"
 msgstr "Typ"
 
-#: admin/trait_wp_membership_login_settings.php:137
+#: admin/trait_wp_membership_login_settings.php:138
 msgid "Designation"
 msgstr "Bezeichnung"
 
-#: admin/trait_wp_membership_login_settings.php:138
+#: admin/trait_wp_membership_login_settings.php:139
 msgid "designation"
 msgstr "bezeichnung"
 
-#: admin/trait_wp_membership_login_settings.php:139
+#: admin/trait_wp_membership_login_settings.php:140
 msgid "Document group"
 msgstr "Dokument Gruppe"
 
-#: admin/trait_wp_membership_login_settings.php:140
+#: admin/trait_wp_membership_login_settings.php:141
 msgid "Authorization"
 msgstr "Berechtigung"
 
-#: admin/trait_wp_membership_login_settings.php:141
+#: admin/trait_wp_membership_login_settings.php:142
 msgid "Redirection"
 msgstr "Weiterleitung"
 
-#: admin/trait_wp_membership_login_settings.php:142
+#: admin/trait_wp_membership_login_settings.php:143
 msgid "Page"
 msgstr "Seite"
 
-#: admin/trait_wp_membership_login_settings.php:143
+#: admin/trait_wp_membership_login_settings.php:144
 msgid "Edit Membership"
 msgstr "Mitgliedschaft bearbeiten"
 
-#: admin/trait_wp_membership_login_settings.php:144
+#: admin/trait_wp_membership_login_settings.php:145
 msgid "Create membership"
 msgstr "Mitgliedschaft erstellen"
 
-#: admin/trait_wp_membership_login_settings.php:145
+#: admin/trait_wp_membership_login_settings.php:146
 msgid "Create"
 msgstr "Erstellen"
 
-#: admin/trait_wp_membership_login_settings.php:147
+#: admin/trait_wp_membership_login_settings.php:148
 msgid "Title"
 msgstr "Titel"
 
-#: admin/trait_wp_membership_login_settings.php:148
+#: admin/trait_wp_membership_login_settings.php:149
 msgid "Upload"
 msgstr "Upload"
 
-#: admin/trait_wp_membership_login_settings.php:149
+#: admin/trait_wp_membership_login_settings.php:150
 msgid "Upload documents"
 msgstr "Upload Dokumente"
 
-#: admin/trait_wp_membership_login_settings.php:150
+#: admin/trait_wp_membership_login_settings.php:151
 msgid "Cancel upload"
 msgstr "Upload abbrechen"
 
-#: admin/trait_wp_membership_login_settings.php:151
+#: admin/trait_wp_membership_login_settings.php:152
 msgid "Uploaded documents"
 msgstr "hochgeladene Dokumente"
 
-#: admin/trait_wp_membership_login_settings.php:152
+#: admin/trait_wp_membership_login_settings.php:153
 msgid "Member Documents"
 msgstr "Mitglieder Dokumente"
 
-#: admin/trait_wp_membership_login_settings.php:153
+#: admin/trait_wp_membership_login_settings.php:154
 msgid "Groups"
 msgstr "Gruppen"
 
-#: admin/trait_wp_membership_login_settings.php:154
+#: admin/trait_wp_membership_login_settings.php:155
 msgid "Add group"
 msgstr "Gruppe hinzufügen"
 
-#: admin/trait_wp_membership_login_settings.php:161
+#: admin/trait_wp_membership_login_settings.php:162
 msgid "Delete all imported posts?"
 msgstr ""
 
-#: admin/trait_wp_membership_login_settings.php:163
+#: admin/trait_wp_membership_login_settings.php:164
 msgid "Really delete membership?"
 msgstr "Mitgliedschaft wirklich löschen?"
 
-#: admin/trait_wp_membership_login_settings.php:164
+#: admin/trait_wp_membership_login_settings.php:165
 msgid "The deletion cannot be undone."
 msgstr "Das Löschen kann nicht rückgängig gemacht."
 
-#: admin/trait_wp_membership_login_settings.php:165
+#: admin/trait_wp_membership_login_settings.php:166
 msgid "Delete membership"
 msgstr "Mitgliedschaft löschen"
 
-#: admin/trait_wp_membership_login_settings.php:166
+#: admin/trait_wp_membership_login_settings.php:167
 msgid "Really delete file?"
 msgstr "Datei wirklich löschen?"
 
-#: admin/trait_wp_membership_login_settings.php:167
+#: admin/trait_wp_membership_login_settings.php:168
 msgid "Delete file"
 msgstr "Datei löschen"
 
-#: admin/trait_wp_membership_login_settings.php:170
+#: admin/trait_wp_membership_login_settings.php:171
 msgid "Delete group really?"
 msgstr "Gruppe wirklich löschen?"
 
-#: admin/trait_wp_membership_login_settings.php:171
+#: admin/trait_wp_membership_login_settings.php:172
 msgid "Delete group"
 msgstr "Gruppe löschen"
 
-#: admin/trait_wp_membership_login_settings.php:172
+#: admin/trait_wp_membership_login_settings.php:173
 msgid "All documents in this group will be moved to the default group."
 msgstr "Alle Dokumente dieser Gruppe werden in die Standardgruppe verschoben."
 
@@ -481,19 +481,23 @@ msgid "Login"
 msgstr "Login"
 
 #: includes/Gutenberg/MembershipWidget/src/index.js:82
-#: includes/Gutenberg/class_wp_membership_gutenberg_block_callback.php:42
+#: includes/Gutenberg/class_wp_membership_gutenberg_block_callback.php:89
 msgid "Stay logged in"
 msgstr "Angemeldet bleiben"
 
-#: includes/Gutenberg/class_wp_membership_gutenberg_block_callback.php:33
+#: includes/Gutenberg/class_wp_membership_gutenberg_block_callback.php:29
+msgid "Members area"
+msgstr "Mitgliederbereich"
+
+#: includes/Gutenberg/class_wp_membership_gutenberg_block_callback.php:79
 msgid "Username or email address"
 msgstr "Benutzername oder E-Mail Adresse"
 
-#: includes/Gutenberg/class_wp_membership_gutenberg_block_callback.php:38
+#: includes/Gutenberg/class_wp_membership_gutenberg_block_callback.php:84
 msgid "Password"
 msgstr "Passwort"
 
-#: includes/Gutenberg/class_wp_membership_gutenberg_block_callback.php:47
+#: includes/Gutenberg/class_wp_membership_gutenberg_block_callback.php:92
 msgid "Log in"
 msgstr "Anmelden"
 
@@ -505,7 +509,7 @@ msgstr "auswählen..."
 msgid "Pages:"
 msgstr "Seiten:"
 
-#: includes/class-wp-memberchip-login.php:408
+#: includes/class-wp-memberchip-login.php:416
 #, php-format
 msgid ""
 "This plugin has been disabled because it requires a PHP version greater than "
@@ -547,7 +551,7 @@ msgstr "Gruppe konnte nicht gespeichert werden."
 
 #: includes/database/class_wp_membership_login_db_handle.php:202
 #: includes/database/class_wp_membership_login_db_handle.php:267
-#: includes/database/class_wp_membership_login_db_handle.php:374
+#: includes/database/class_wp_membership_login_db_handle.php:376
 msgid "Error while saving!"
 msgstr "Fehler beim speichern!"
 
@@ -562,42 +566,42 @@ msgid "Group created!"
 msgstr "Gruppe erstellt!"
 
 #: includes/database/class_wp_membership_login_db_handle.php:298
-#: includes/database/class_wp_membership_login_db_handle.php:410
-#: includes/database/class_wp_membership_login_db_handle.php:440
+#: includes/database/class_wp_membership_login_db_handle.php:413
+#: includes/database/class_wp_membership_login_db_handle.php:443
 msgid "Changes could not be saved."
 msgstr "Änderungen konnten nicht gespeichert werden."
 
 #: includes/database/class_wp_membership_login_db_handle.php:299
-#: includes/database/class_wp_membership_login_db_handle.php:411
-#: includes/database/class_wp_membership_login_db_handle.php:441
+#: includes/database/class_wp_membership_login_db_handle.php:414
+#: includes/database/class_wp_membership_login_db_handle.php:444
 msgid "Changes not saved"
 msgstr "Änderungen nicht gespeichert"
 
 #: includes/database/class_wp_membership_login_db_handle.php:304
-#: includes/database/class_wp_membership_login_db_handle.php:416
-#: includes/database/class_wp_membership_login_db_handle.php:446
+#: includes/database/class_wp_membership_login_db_handle.php:419
+#: includes/database/class_wp_membership_login_db_handle.php:449
 msgid "Changes were saved successfully."
 msgstr "Änderungen wurden erfolgreich gespeichert."
 
 #: includes/database/class_wp_membership_login_db_handle.php:305
-#: includes/database/class_wp_membership_login_db_handle.php:417
-#: includes/database/class_wp_membership_login_db_handle.php:447
+#: includes/database/class_wp_membership_login_db_handle.php:420
+#: includes/database/class_wp_membership_login_db_handle.php:450
 msgid "Changes saved"
 msgstr "Änderungen gespeichert"
 
-#: includes/database/class_wp_membership_login_db_handle.php:373
+#: includes/database/class_wp_membership_login_db_handle.php:375
 msgid "Settings could not be saved."
 msgstr "Einstellungen konnten nicht gespeichert werden."
 
-#: includes/database/class_wp_membership_login_db_handle.php:379
+#: includes/database/class_wp_membership_login_db_handle.php:381
 msgid "Settings were saved successfully."
 msgstr "Einstellungen wurden erfolgreich gespeichert."
 
-#: includes/database/class_wp_membership_login_db_handle.php:380
+#: includes/database/class_wp_membership_login_db_handle.php:382
 msgid "Settings saved"
 msgstr "Einstellungen gespeichert"
 
-#: includes/database/class_wp_membership_login_db_handle.php:538
+#: includes/database/class_wp_membership_login_db_handle.php:542
 msgid "An error occurred while creating the database."
 msgstr "Es ist ein Fehler beim erstellen der Datenbank aufgetreten."
 

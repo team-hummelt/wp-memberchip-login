@@ -1,0 +1,35 @@
+{% extends "@layout/layout.html.twig" %}
+{% set container = 'container' %}
+{% set headertxt =  'Member Documents'|__ %}
+{% set subtext = 'Download'|__ %}
+  {% block content %}
+       <div class="card-body" style="min-height: 65vh">
+          <div class="table-responsive pt-3">
+              <table id="dataTablesDocumentsDownload"
+                     class="table table-bordered table-striped w-100 nowrap-0">
+                  <thead>
+                  <tr class="bg-body-tertiary">
+                      <th></th>
+                      <th class="fw-normal" scope="col">{{ 'Title'|__ }}</th>
+                      <th class="fw-normal" scope="col">{{ 'File'|__ }}</th>
+                      <th class="fw-normal" scope="col">{{ 'Size'|__ }}</th>
+                      <th class="fw-normal text-truncate" scope="col">{{ 'Type'|__ }}</th>
+                      <th title="{{ 'Description'|__ }}" class="fw-normal" scope="col">{{ 'Description'|__ }} </th>
+                      <th title="{{ 'Download'|__ }}" class="fw-normal text-nowrap" scope="col">{{ 'Download'|__ }}</th>
+                  </tr>
+                  </thead>
+                  <tfoot>
+                  <tr class="bg-body-tertiary">
+                      <th></th>
+                      <th class="fw-normal" scope="col">{{ 'Title'|__ }}</th>
+                      <th class="fw-normal" scope="col">{{ 'File'|__ }}</th>
+                      <th class="fw-normal" scope="col">{{ 'Size'|__ }}</th>
+                      <th class="fw-normal text-truncate" scope="col">{{ 'Type'|__ }}</th>
+                      <th title="{{ 'Description'|__ }}" class="fw-normal" scope="col">{{ 'Description'|__ }} </th>
+                      <th title="{{ 'Download'|__ }}" class="fw-normal text-nowrap" scope="col">{{ 'Download'|__ }}</th>
+                  </tr>
+                  </tfoot>
+              </table>
+          </div>
+      </div>
+  {% endblock %}

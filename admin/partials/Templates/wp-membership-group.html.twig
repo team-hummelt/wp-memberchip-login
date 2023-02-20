@@ -1,0 +1,67 @@
+{% extends "@layout/layout.html.twig" %}
+{% set container = 'container' %}
+{% set subtext = 'Groups'|__ %}
+  {% block content %}
+
+      <div class="card-body" style="min-height: 65vh">
+          <div id="collParent">
+              <div id="colMembershipGroup" data-bs-parent="#collParent" class="collapse show">
+                  <button  data-bs-toggle="modal" data-bs-target="#addGroupModal" class="btn btn-success">
+                      <i class="bi bi-node-plus me-1"></i>
+                      {{ 'Add group'|__ }}
+                  </button>
+                  <hr>
+                  <div id="docGroups" class="row g-3">
+                      {% for d in data %}
+                          {{ include('@loop/wp-membership-document-group.html.twig') }}
+                      {% endfor %}
+                  </div>
+              </div>
+              <div id="colMembershipEditGroup" data-bs-parent="#collParent" class="collapse"></div>
+          </div>
+      </div>
+
+      <div class="modal fade" id="addGroupModal" tabindex="-1" aria-labelledby="groupModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <form class="membership-admin-formular">
+                      <input type="hidden" name="method" value="add_document_group">
+                      <div class="modal-header bg-green">
+                          <h1 class="modal-title  text-white fs-5" id="groupModalLabel">
+                              <i class="bi bi-node-plus me-1"></i>
+                              {{ 'Add group'|__ }}
+                          </h1>
+                          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="form-floating mb-3">
+                              <input type="text" name="bezeichnung" class="form-control no-blur" id="inputTitle"
+                                     placeholder="{{ 'Designation'|__ }}" required>
+                              <label class="fw-normal" for="inputTitle">{{ 'Designation'|__ }}</label>
+                          </div>
+                          <div class="form-floating mb-3">
+                                      <textarea class="form-control no-blur" name="beschreibung" placeholder="{{ 'Description'|__ }}"
+                                                id="inputBeschreibung"></textarea>
+                              <label class="fw-normal" for="inputBeschreibung">{{ 'Description'|__ }}</label>
+                          </div>
+                          <div class="form-check form-switch">
+                              <input class="form-check-input no-blur" name="active" type="checkbox" role="switch"
+                                     id="active" checked>
+                              <label class="form-check-label fw-normal" for="active">{{ 'active'|__ }}</label>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                              <i class="bi bi-x-circle me-1"></i>
+                              {{ 'Cancel'|__ }}
+                          </button>
+                          <button type="submit" class="btn btn-success">
+                              <i class="bi bi-node-plus me-1"></i>
+                              {{ 'Add group'|__ }}
+                          </button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  {% endblock %}

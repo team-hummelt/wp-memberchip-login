@@ -1,0 +1,115 @@
+<hr>
+
+<form data-target=".membership"
+      class="{% if handle == 'update'  %}membership-admin-autosave{% else %}membership-admin-formular{% endif %}">
+    <input type="hidden" name="method" value="membership_handle">
+    <input type="hidden" name="handle" value="{{ handle }}">
+    <input type="hidden" name="id" value="{{ d.id }}">
+    <div class="d-flex flex-wrap align-items-center">
+        <div class="fs-5">
+            <i class="bi bi-incognito text-orange me-1"></i> {% if handle == 'update' %} {{ 'Edit Membership'|__ }}{% else %} {{ 'Create membership'|__ }}{% endif %}
+        </div>
+        <div class="membership ms-auto ajax-status-spinner"></div>
+    </div>
+    <hr>
+    <button data-type="back-member-table" data-target="#colMembershipOverview" data-parent="#collParent" type="button"
+            class="mbl-action btn btn-outline-success">
+        <i class="bi bi-reply-all-fill me-1"></i>
+        {{ 'back'|__ }}
+    </button>
+    <div class="col-12 mt-3 card-body rounded border shadow-sm mx-auto">
+        <div class="row g-3">
+            <div class="col-xl-6 col-12">
+                <div class="form-floating">
+                    <input name="designation" type="text" value="{{ d.designation }}"
+                           class="form-control no-blur" id="inputDesignation"
+                           placeholder="{{ 'Designation'|__ }}" required>
+                    <label for="inputDesignation">{{ 'Designation'|__ }}</label>
+                </div>
+            </div>
+            <div class="col-xl-6 col-12">
+                <div class="form-floating">
+                    <select name="page_id" class="form-select no-blur mw-100"
+                            id="selectPageId"
+                            aria-label="{{ 'Page'|__ }}" required>
+                        <option value="">{{ 'select...'|__ }}</option>
+                        {% for s in pages %}
+                            <option value="{{ s.id }}"
+                                    {% if d.page_id == s.id %}selected{% endif %}>{{ s.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="selectPageId">{{ 'Page'|__ }}</label>
+                </div>
+            </div>
+            <div class="col-xl-6 col-12">
+                <div class="form-floating">
+                    <select name="document_group" class="form-select no-blur mw-100"
+                            id="selectDocumentGroup"
+                            aria-label="{{ 'Document group'|__ }}">
+                        <option value="">{{ 'select...'|__ }}</option>
+                        {% for s in groups %}
+                            <option value="{{ s.id }}"
+                                    {% if d.groupID == s.id %}selected{% endif %}>{{ s.designation }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="selectDocumentGroup">{{ 'Document group'|__ }}</label>
+                </div>
+            </div>
+            <div class="col-xl-6 col-12">
+                <div class="form-floating">
+                    <select name="capabilities" class="form-select no-blur mw-100"
+                            id="selectCapabilities"
+                            aria-label="{{ 'Authorization'|__ }}" required>
+                        {% for s in cap %}
+                            <option value="{{ s.value }}"
+                                    {% if d.capabilities == s.value %}selected{% endif %}>{{ s.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="selectCapabilities">{{ 'Authorization'|__ }}</label>
+                </div>
+            </div>
+            <div id="loginScriptFile" class="col-xl-6 col-12 collapse {% if handle == 'update' and not d.self_active %}show{% endif %}">
+                   <div class="form-floating">
+                        <input name="login_link" type="text" value="{{ d.login_link }}"
+                               class="form-control no-blur" id="inputLogin"
+                               placeholder="{{ 'Login'|__ }}" required>
+                        <label for="inputLogin">{{ 'Login'|__ }}</label>
+                    </div>
+            </div>
+            <div class="col-12">
+                <div class="d-flex flex-wrap">
+                    <div class="form-check form-switch my-1 me-5">
+                        <input name="active" class="form-check-input no-blur"
+                               type="checkbox" role="switch"
+                               id="checkActive" {% if d.active %}checked{% endif %}>
+                        <label class="form-check-label"
+                               for="checkActive">{{ 'Login'|__ }} {{ 'active'|__ }}</label>
+                    </div>
+                    <div class="form-check form-switch my-1 me-5">
+                        <input data-bs-toggle="collapse" data-bs-target="#loginScriptFile" name="self_active" class="form-check-input no-blur"
+                               type="checkbox" role="switch"
+                               id="checkSelfActive" {% if handle == 'insert'%}checked{% endif %} {% if handle == 'update' and d.self_active %}checked{% endif %}>
+                        <label class="form-check-label"
+                               for="checkSelfActive">{{ 'Login script'|__ }} (self)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating">
+                    <textarea name="note" class="form-control no-blur" placeholder="{{ 'Note'|__ }}" id="inputNote"
+                              style="height: 100px">{{ d.note }}</textarea>
+                    <label for="inputNote">{{ 'Note'|__ }}</label>
+                </div>
+            </div>
+
+            {% if handle == 'insert' %}
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-node-plus me-1"></i>
+                        {{ 'Create'|__ }}
+                    </button>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</form>

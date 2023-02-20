@@ -1,0 +1,65 @@
+<div class="bg-light card-body shadow-sm my-4 border rounded">
+    <button data-type="backToDocTable" class="mbl-action btn btn-success btn-sm">
+        <i class="bi bi-reply-all-fill me-1"></i>
+        {{ 'back'|__ }}
+    </button>
+
+    <form class="membership-admin-formular">
+        <input type="hidden" name="method" value="update_document">
+        <input type="hidden" name="id" value="{{ d.id }}">
+        <hr>
+        <h5>
+            {{ 'File'|__ }}: {{ d.original }}
+            <small class="d-block fw-normal mt-2 small text-muted">
+                <span class="fw-bold">ID:</span> {{ d.file_id }}
+            </small>
+        </h5>
+        <hr>
+        <div class="row g-3">
+            <div class="col-xl-6 col-12">
+                <div class="form-floating">
+                    <input type="text" name="name" value="{{ d.name }}" class="form-control no-blur" id="inputTitle"
+                           placeholder="{{ 'Title'|__ }}">
+                    <label for="inputTitle">{{ 'Title'|__ }}</label>
+                </div>
+            </div>
+            <div class="col-xl-6 col-12">
+                <div class="form-floating">
+                    <select class="form-select no-blur mw-100" name="group" id="selectGroup"
+                            aria-label="{{ 'Group'|__ }}"
+                            required>
+                    {% for s in group %}
+                        <option value="{{ s.id }}" {% if d.group == s.id %}selected{% endif %}>{{ s.designation }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="selectGroup">{{ 'Group'|__ }}</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating">
+                <textarea name="beschreibung" class="form-control no-blur" placeholder="{{ 'Description'|__ }}"
+                          id="floatingTextarea"
+                          style="height: 100px">{{ d.beschreibung }}</textarea>
+                    <label for="floatingTextarea">{{ 'Description'|__ }}</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-check form-switch">
+                    <input class="form-check-input no-blur"
+                           name="active" type="checkbox" role="switch" id="checkActive"
+                           {% if d.active %}checked{% endif %}>
+                    <label class="form-check-label" for="checkActive">{{ 'Download'|__ }} {{ 'active'|__ }}</label>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-blue">
+            <i class="bi bi-save2 me-1"></i>
+            {{ 'Save'|__ }}
+        </button>
+        <button type="button" data-type="backToDocTable" class="mbl-action btn btn-blue-outline">
+            <i class="bi bi-x-circle me-1"></i>
+            {{ 'Cancel'|__ }}
+        </button>
+    </form>
+</div>

@@ -1,0 +1,52 @@
+<hr>
+<div id="uploadExample" class=" card-body my-4 border rounded">
+    <h5 class="fw-normal">
+        <i class="bi bi-upload me-1"></i>
+        {{ 'Upload documents'|__ }}
+    </h5>
+    <hr>
+    <form class="upload-data-image">
+        <input type="hidden" name="method" value="dokument_upload">
+        <input type="hidden" name="_ajax_nonce" value="{{ nonce }}">
+        <input type="hidden" name="action" value="MembershipLogin">
+        <div class="col-xl-6 col-12 mb-3">
+            <div class="form-floating">
+                <select class="form-select no-blur" name="group" id="selectGroup"
+                        aria-label="{{ 'Group'|__ }}"
+                        required>
+                    {% for s in group %}
+                        <option value="{{ s.id }}">{{ s.designation }}</option>
+                    {% endfor %}
+                </select>
+                <label for="selectGroup">{{ 'Group'|__ }}</label>
+            </div>
+        </div>
+        <div id="fileUploadDropzone" class="dropzone"></div>
+        <button type="button" id="clear-dropzone" class="btn btn-blue-outline btn-sm my-2"
+                disabled>
+            {{ 'Cancel upload'|__ }}
+        </button>
+    </form>
+    <div id="uploadTable" class="card mt-5 mb-1 shadow-sm d-none">
+        <h5 class="card-header fw-normal form-background-head"><i
+                    class="fa fa-files-o me-1"></i> {{ 'Uploaded documents'|__ }}
+        </h5>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped nowrap-O w-100">
+                    <thead>
+                    <tr>
+                        <th class="text-center align-middle" scope="col"></th>
+                        <th class="text-start align-middle" scope="col">{{ 'File'|__ }}</th>
+                        <th class="text-center align-middle" scope="col">{{ 'Created'|__ }}</th>
+                        <th class="text-center align-middle" scope="col">{{ 'Size'|__ }}</th>
+                        <th class="text-center align-middle" scope="col">{{ 'Type'|__ }}</th>
+                        <th class="text-center align-middle" scope="col">{{ 'Delete'|__ }}</th>
+                    </tr>
+                    </thead>
+                    <tbody id="uploadedFiles"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

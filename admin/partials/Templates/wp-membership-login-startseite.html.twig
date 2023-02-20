@@ -1,0 +1,163 @@
+{% set container = 'container' %}
+{# {% set headertxt = 'Theme Einstellungen' %}
+{% set subtext = 'Optionen' %}
+#}
+{% extends "@layout/layout.html.twig" %}
+
+ {% block content %}
+     <div class="card-body" style="min-height: 65vh">
+         <button data-type="membership_login_table" data-target="#colMembershipOverview" data-parent="#collParent"
+                 class="mbl-action btn btn-orange-outline my-1" disabled>
+             <i class="bi bi-arrow-right-circle me-1"></i>
+             {{ 'Overview'|__ }}
+         </button>
+         <button data-type="membership_settings" data-target="#colMembershipSettings" data-parent="#collParent"
+                 class="mbl-action btn btn-orange-outline my-1">
+             <i class="bi bi-aspect-ratio me-1"></i>
+             {{ 'Plugin settings'|__ }}
+         </button>
+         <div id="collParent">
+             <div id="colMembershipOverview" data-bs-parent="#collParent" class="collapse show">
+                 <hr>
+                 <button data-target="#colMembershipHandle" data-parent="#collParent" data-handle="insert" data-type="wp_membership_template_handle"
+                         class="mbl-action btn btn-success">
+                     <i class="bbi bi-node-plus me-1"></i>
+                     {{ 'Add membership'|__ }}
+                 </button>
+                 <hr>
+                 <div class="table-responsive pt-3">
+                     <table id="dataTablesMembership"
+                            class="table table-bordered table-striped w-100 nowrap-0">
+                         <thead>
+                         <tr class="bg-body-tertiary">
+                             <th class="fw-normal" scope="col">{{ 'Designation'|__ }}</th>
+                             <th class="fw-normal text-nowrap" scope="col">{{ 'Document group'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Authorization'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Page'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Redirection'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Login'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Active'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Created'|__ }}</th>
+                             <th class="fw-normal text-nowrap" scope="col">{{ 'Edit'|__ }}</th>
+                             <th class="fw-normal text-nowrap" scope="col">{{ 'Delete'|__ }}</th>
+                         </tr>
+                         </thead>
+                         <tfoot>
+                         <tr class="bg-body-tertiary">
+                             <th class="fw-normal" scope="col">{{ 'Designation'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Document group'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Authorization'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Page'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Redirection'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Login'|__ }}</th>
+                             <th class="fw-normal" scope="col">{{ 'Active'|__ }}</th>
+                             <th class="fw-normal text-nowrap" scope="col">{{ 'Created'|__ }}</th>
+                             <th class="fw-normal text-nowrap" scope="col">{{ 'Edit'|__ }}</th>
+                             <th class="fw-normal text-nowrap" scope="col">{{ 'Delete'|__ }}</th>
+                         </tr>
+                         </tfoot>
+                     </table>
+                 </div>
+             </div>
+             <div id="colMembershipSettings" data-bs-parent="#collParent" class="collapse">
+                 <hr>
+                 <form data-target=".plugin-settings" class="membership-admin-autosave">
+                     <input type="hidden" name="method" value="update_plugin_settings">
+                     <div class="d-flex flex-wrap align-items-center">
+                         <div class="fs-5">
+                             <i class="bi bi-wrench-adjustable text-orange me-1"></i> {{ 'Plugin settings'|__ }}
+                         </div>
+                         <div class="plugin-settings ms-auto ajax-status-spinner"></div>
+                     </div>
+                     <hr>
+                     <div class="col-12 mt-4 card-body rounded border shadow-sm mx-auto">
+                         <div class="row g-3">
+                             <div class="col-xl-6 col-12">
+                                 <div class="form-floating">
+                                     <select name="plugin_min_role" class="form-select no-blur mw-100"
+                                             id="selectPluginCapabilities"
+                                             aria-label="{{ 'Minimum requirement for plugin usage'|__ }}">
+                                         {% for s in select %}
+                                             <option value="{{ s.value }}"
+                                                     {% if sdb.plugin_min_role == s.value %}selected{% endif %}>{{ s.name }}</option>
+                                         {% endfor %}
+                                     </select>
+                                     <label for="selectPluginCapabilities">{{ 'Minimum requirement for plugin usage'|__ }}</label>
+                                 </div>
+                             </div>
+                             <div class="col-xl-6 col-12">
+                                 <div class="form-floating">
+                                     <select name="download_min_role" class="form-select no-blur mw-100"
+                                             id="selectDownloadCapabilities"
+                                             aria-label="{{ 'User Role Downloads (Dashboard View)'|__ }}">
+                                         {% for s in select %}
+                                             <option value="{{ s.value }}"
+                                                     {% if sdb.download_min_role == s.value %}selected{% endif %}>{{ s.name }}</option>
+                                         {% endfor %}
+                                     </select>
+                                     <label for="selectDownloadCapabilities">{{ 'User Role Downloads (Dashboard View)'|__ }}</label>
+                                 </div>
+                             </div>
+                             <div class="col-12">
+                                 <div class="d-flex flex-wrap">
+                                     <div class="form-check form-switch my-1 me-5">
+                                         <input name="bootstrap_css_aktiv" class="form-check-input no-blur"
+                                                type="checkbox" role="switch"
+                                                id="checkCssActive" {% if sdb.bootstrap_css_aktiv %}checked{% endif %}>
+                                         <label class="form-check-label"
+                                                for="checkCssActive">{{ 'Bootstrap CSS active'|__ }}</label>
+                                     </div>
+                                     <div class="form-check form-switch my-1">
+                                         <input name="bootstrap_js_aktiv" class="form-check-input no-blur"
+                                                type="checkbox" role="switch"
+                                                id="checkJsActive" {% if sdb.bootstrap_js_aktiv %}checked{% endif %}>
+                                         <label class="form-check-label"
+                                                for="checkJsActive">{{ 'Bootstrap JS active'|__ }}</label>
+                                     </div>
+                                 </div>
+                             </div>
+                             <hr class="mb-0 mt-3">
+                             <div class="col-12">
+                                 <div class="form-check form-switch my-1">
+                                     <input name="show_dashboard_downloads" class="form-check-input no-blur"
+                                            type="checkbox" role="switch"
+                                            id="checkShowDownloadActive"
+                                            {% if sdb.show_dashboard_downloads %}checked{% endif %}>
+                                     <label class="form-check-label"
+                                            for="checkShowDownloadActive">{{ 'Show downloads in dashboard'|__ }}</label>
+                                 </div>
+                             </div>
+                             <hr class="mb-0">
+                             <div class="col-12">
+                                 <div class="fs-5">
+                                     <i class="bi bi-upload text-orange me-1"></i> {{ 'Upload settings'|__ }}
+                                 </div>
+                                 <hr class="mb-1">
+                             </div>
+                             <div class="col-xl-6 col-12">
+                                 <div class="form-floating">
+                                     <input name="mime_type" type="text" value="{{ sdb.mime_types }}"
+                                            class="form-control no-blur" id="inputMimeTypes"
+                                            placeholder="{{ 'Allowed documents'|__ }}">
+                                     <label for="inputMimeTypes">{{ 'Allowed documents'|__ }}</label>
+                                 </div>
+                                 <div class="form-text">
+                                     {{ 'Separate MimeTypes with comma or semicolon. (e.g. pdf, jpg, png)'|__ }}
+                                 </div>
+                             </div>
+                             <div class="col-xl-6 col-12">
+                                 <div class="form-floating">
+                                     <input name="max_file_size" type="number" min="0" value="{{ sdb.max_file_size }}"
+                                            class="form-control no-blur" id="inputFileSize"
+                                            placeholder="{{ 'Maximum file size (MB)'|__ }}">
+                                     <label for="inputFileSize">{{ 'Maximum file size (MB)'|__ }}</label>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </form>
+             </div>
+             <div id="colMembershipHandle" data-bs-parent="#collParent" class="collapse"></div>
+         </div>
+     </div>
+ {% endblock %}

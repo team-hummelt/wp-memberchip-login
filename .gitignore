@@ -1,0 +1,10 @@
+.idea
+.github
+.vscode
+includes/vendor/twbs/bootstrap-icons/docs
+includes/vendor/twbs/bootstrap-icons/icons
+includes/vendor/twbs/bootstrap-icons/build
+includes/vendor/twbs/bootstrap-icons/.github
+/includes/Gutenberg/MembershipWidget/src/
+/includes/Gutenberg/MembershipWidget/node_modules/
+/includes/Gutenberg/MembershipWidget/package-lock.json

@@ -1,0 +1,64 @@
+{% extends "@layout/layout.html.twig" %}
+{% set container = 'container' %}
+{% set headertxt =  'Member Documents'|__ %}
+{% set subtext = 'Documents'|__ %}
+  {% block content %}
+      <div class="card-body" style="min-height: 65vh">
+          <button data-type="document_table" data-target="#colMembershipDocumentsTable" data-parent="#collParent"
+                  class="mbl-action btn btn-orange-outline my-1" disabled>
+              <i class="bi bi-collection me-1"></i>
+              {{ 'Documents'|__ }}
+          </button>
+          <button data-type="document_upload_template" data-target="#colMembershipUpload" data-parent="#collParent"
+                  class="mbl-action btn btn-orange-outline my-1">
+              <i class="bi bi-upload me-1"></i>
+              {{ 'Upload'|__ }}
+          </button>
+          <div id="collParent">
+              <div id="colMembershipDocumentsTable" data-bs-parent="#collParent" class="collapse show">
+                  <hr>
+                  <div class="table-responsive pt-3">
+                      <table id="dataTablesDocuments"
+                             class="table table-bordered table-striped w-100 nowrap-0">
+                          <thead>
+                          <tr class="bg-body-tertiary">
+                              <th></th>
+                              <th class="fw-normal" scope="col">{{ 'Title'|__ }}</th>
+                              <th class="fw-normal" scope="col">{{ 'Group'|__ }}</th>
+                              <th class="fw-normal" scope="col">{{ 'File'|__ }}</th>
+                              <th class="fw-normal" scope="col">{{ 'Size'|__ }}</th>
+                              <th class="fw-normal text-truncate" scope="col">{{ 'Type'|__ }}</th>
+                              <th title="{{ 'Active'|__ }}" class="fw-normal" scope="col"><i class="bi bi-cloud-check"></i></th>
+                              <th title="{{ 'Description'|__ }}" class="fw-normal" scope="col"><i class="bi bi-card-text"></i></th>
+                              <th title="{{ 'Downloads'|__ }}" class="fw-normal" scope="col"><i class="bi bi-arrow-counterclockwise"></i></th>
+                              <th title="{{ 'Created'|__ }}" class="fw-normal text-nowrap text-center" scope="col"><i class="bi bi-clock"></i></th>
+                              <th title="{{ 'Download'|__ }}" class="fw-normal text-nowrap" scope="col"><i class="bi bi-download"></i> </th>
+                              <th title="{{ 'Edit'|__ }}" class="fw-normal text-nowrap" scope="col"><i class="bi bi-pencil-square"></i></th>
+                              <th title="{{ 'Delete'|__ }}" class="fw-normal text-nowrap" scope="col"><i class="bi bi-trash"></i></th>
+                          </tr>
+                          </thead>
+                          <tfoot>
+                          <tr class="bg-body-tertiary">
+                              <th></th>
+                              <th class="fw-normal" scope="col">{{ 'Title'|__ }}</th>
+                              <th class="fw-normal" scope="col">{{ 'Group'|__ }}</th>
+                              <th class="fw-normal" scope="col">{{ 'File'|__ }}</th>
+                              <th class="fw-normal" scope="col">{{ 'Size'|__ }}</th>
+                              <th class="fw-normal" scope="col">{{ 'Type'|__ }}</th>
+                              <th title="{{ 'Active'|__ }}" class="fw-normal" scope="col"><i class="bi bi-cloud-check"></i></th>
+                              <th title="{{ 'Description'|__ }}" class="fw-normal" scope="col"><i class="bi bi-card-text"></i></th>
+                              <th title="{{ 'Downloads'|__ }}" class="fw-normal" scope="col"><i class="bi bi-arrow-counterclockwise"></i></th>
+                              <th title="{{ 'Created'|__ }}" class="fw-normal text-nowrap text-center" scope="col"><i class="bi bi-clock"></i></th>
+                              <th title="{{ 'Download'|__ }}" class="fw-normal text-nowrap" scope="col"><i class="bi bi-download"></i> </th>
+                              <th title="{{ 'Edit'|__ }}" class="fw-normal text-nowrap" scope="col"><i class="bi bi-pencil-square"></i></th>
+                              <th title="{{ 'Delete'|__ }}" class="fw-normal text-nowrap" scope="col"><i class="bi bi-trash"></i></th>
+                          </tr>
+                          </tfoot>
+                      </table>
+                  </div>
+              </div>
+              <div id="colMembershipUpload" data-bs-parent="#collParent" class="collapse"></div>
+              <div id="colMembershipEditDocument" data-bs-parent="#collParent" class="collapse"></div>
+          </div>
+      </div>
+  {% endblock %}

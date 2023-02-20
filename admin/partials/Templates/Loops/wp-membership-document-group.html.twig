@@ -1,0 +1,38 @@
+<div id="group{{ d.id }}" class="col-xl-4 col-lg-6 col-12">
+    <form class="membership-admin-formular">
+        <input type="hidden" name="method" value="update_document_group">
+        <input type="hidden" name="id" value="{{ d.id }}">
+        <div class="card h-100 d-flex flex-column">
+            <div class="card-body">
+                <div class="form-floating mb-3">
+                    <input type="text" name="bezeichnung" value="{{ d.designation }}" class="form-control no-blur"
+                           id="inputName{{ d.id }}"
+                           placeholder="{{ 'Designation'|__ }}" required>
+                    <label for="inputName{{ d.id }}">{{ 'Designation'|__ }}</label>
+                </div>
+                <div class="form-floating mb-3">
+                                      <textarea class="form-control no-blur" name="beschreibung"
+                                                placeholder="{{ 'Description'|__ }}"
+                                                id="inputBeschreibung{{ d.id }}">{{ d.description }}</textarea>
+                    <label for="inputBeschreibung{{ d.id }}">{{ 'Description'|__ }}</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input no-blur" name="active" type="checkbox" role="switch"
+                           id="active{{ d.id }}" {% if d.active %}checked{% endif %}>
+                    <label class="form-check-label" for="active{{ d.id }}">{{ 'active'|__ }}</label>
+                </div>
+            </div>
+            <div class="card-footer text-center mt-auto">
+                <button type="submit" title="{{ 'Save'|__ }}" class="btn btn-success btn-sm">
+                    <i class="bi bi-save2"></i>
+                </button>
+                {% if d.id != 1 %}
+                    <button data-id="{{ d.id }}" data-type="delete_group" type="button" title="{{ 'Delete'|__ }}"
+                            class="mbl-action btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+</div>

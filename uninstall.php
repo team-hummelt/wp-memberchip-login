@@ -45,4 +45,15 @@ delete_option("wp-memberchip-login_install_time");
 delete_transient( "wp-memberchip-login-admin-notice-error-panel-" . get_current_user_id() );
 delete_transient( "wp-memberchip-login-admin-notice-success-panel-" . get_current_user_id());
 
-//membership_login_security_uploads
+global $wpdb;
+$table_name = $wpdb->prefix . 'membership_login_security_uploads';
+$sql = "DROP TABLE IF EXISTS $table_name";
+$wpdb->query($sql);
+
+$table_name = $wpdb->prefix . 'membership_login_security';
+$sql = "DROP TABLE IF EXISTS $table_name";
+$wpdb->query($sql);
+
+$table_name = $wpdb->prefix . 'membership_document_groups';
+$sql = "DROP TABLE IF EXISTS $table_name";
+$wpdb->query($sql);

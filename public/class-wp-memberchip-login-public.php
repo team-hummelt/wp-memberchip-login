@@ -29,7 +29,7 @@ class Wp_Memberchip_Login_Public {
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
-	private $plugin_name;
+	private string $plugin_name;
 
 	/**
 	 * The version of this plugin.
@@ -38,16 +38,16 @@ class Wp_Memberchip_Login_Public {
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
-	private $version;
+	private string $version;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
+	 * @param      string    $plugin_name The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
+	 *@since    1.0.0
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct(string $plugin_name, string $version ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
@@ -97,9 +97,10 @@ class Wp_Memberchip_Login_Public {
 		 */
 
         global $wp_query;
-        //if( isset($wp_query->query_vars['security']) ){
+        $settings = get_option($this->plugin_name.'_settings');
+        if( isset($wp_query->query_vars['security']) && $settings['bootstrap_css_aktiv'] ){
             wp_enqueue_style($this->plugin_name . '-public-bs-style', plugin_dir_url(dirname(__FILE__)) . 'admin/assets/css/bs/bootstrap.min.css', array(), $this->version, false);
-      // }
+       }
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-memberchip-login-public.js', array( 'jquery' ), $this->version, false );
 
 	}

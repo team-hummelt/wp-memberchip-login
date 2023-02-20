@@ -549,14 +549,11 @@ class Wp_Memberchip_Login {
      * @access   private
      */
     private function register_wp_membership_security() {
-        $security = WP_Membership_Login_Security_Handle::instance($this->plugin_name, $this->version, $this->main);
-        $security->fn_wp_membership_login_show_query();
-        $this->loader->add_filter( $this->plugin_name.'/check_user_capabilities', $security, 'fn_child_check_user_capabilities' );
-        //$this->loader->add_action( 'after_setup_theme', $security, 'wp_membership_signon_login' ,10 ,3);
-
-        //$this->loader->add_action( 'parse_request', $security, 'fn_wp_membership_login_show_query',10,1 );
-       // $this->loader->add_action('template_redirect', $security, 'fn_wp_membership_login_show_query');
-
+        if ( is_file( plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-memberchip-login-admin.php' ) ) {
+            $security = WP_Membership_Login_Security_Handle::instance($this->plugin_name, $this->version, $this->main);
+            $security->fn_wp_membership_login_show_query();
+            $this->loader->add_filter($this->plugin_name . '/check_user_capabilities', $security, 'fn_child_check_user_capabilities');
+        }
     }
 
 

@@ -59,8 +59,8 @@ class WP_Membership_Login_Document_Upload
         $this->settings = get_option($this->basename . '_settings');
         $this->main = $main;
         $this->options = [
-            'check_filesize' => true,
-            'check_type' => false,
+            'check_filesize' => $this->settings['check_mime_type_active'],
+            'check_type' => $this->settings['check_upload_size_active'],
             'mkdir_mode' => 0755,
             'max_file_size' => (int) ($this->settings['max_file_size']) * 1024 * 1024,
             'accept_file_types' => '/\.(pdf|svg|rar|zip|jpg||jpeg|png|gif|doc|docx)$/i',
@@ -97,17 +97,20 @@ class WP_Membership_Login_Document_Upload
             $fileName = $this->trim_file_name($_FILES['file']['name']);
             $content_range_header = $this->get_server_var('HTTP_CONTENT_RANGE');
             $content_range = $content_range_header ? preg_split('/[^0-9]+/', $content_range_header) : null;
-
+            preg_match('#\.([a-z0-9]+)$#i', $fileName, $tmp);
             if ($this->options['check_type']) {
-                if (!preg_match($this->options['accept_file_types'], $fileName)) {
-                    preg_match($this->options['file_type_end'], $fileName, $matches, PREG_OFFSET_CAPTURE, 0);
+                $mimes = $this->fnPregWhitespace($this->settings['mime_types']);
+                $mimes = str_replace([',','-',';'],'|',$mimes);
+                $mimes = explode('|',strtolower($mimes));
+                if (!in_array(strtolower($tmp[1]), $mimes)) {
+                  //  preg_match($this->options['file_type_end'], $fileName, $matches, PREG_OFFSET_CAPTURE, 0);
                     $this->set_header('HTTP/1.0 400 Bad Request');
-                    $record->msg = strtoupper($matches[1][0]) .' nicht erlaubt!';
+                    $record->msg = strtoupper($tmp[1]) .' nicht erlaubt!';
                     return $record;
                 }
             }
 
-            preg_match('#\.([a-z0-9]+)$#i', $fileName, $tmp);
+            //preg_match('#\.([a-z0-9]+)$#i', $fileName, $tmp);
             $randName = $this->random_string();
             $newName = $randName . '.' . $tmp[1];
             $this->file_id = $randName;
@@ -356,5 +359,13 @@ class WP_Membership_Login_Document_Upload
             $str = md5(uniqid('random_document_app_root', true));
         }
         return $str;
+    }
+
+    private function fnPregWhitespace($string): string
+    {
+        if (!$string) {
+            return '';
+        }
+        return trim(preg_replace('/\s+/', '', $string));
     }
 }

@@ -54,6 +54,7 @@ class WP_Membership_Shortcodes
         $this->version = $version;
         $this->basename = $basename;
         add_shortcode('mbl-documents', array($this, 'wp_membership_documents_shortcode'));
+        add_shortcode('mbl-logout', array($this, 'wp_membership_logout_shortcode'));
     }
 
     public function wp_membership_documents_shortcode($atts, $content, $tag)
@@ -76,7 +77,7 @@ class WP_Membership_Shortcodes
         if(!apply_filters($this->basename.'/check_user_capabilities', $mbl->capabilities)){
             return '';
         }
-        $args = sprintf('WHERE d.group=%d and g.active=1', $mbl->document_group);
+        $args = sprintf('WHERE d.group=%d and g.active=1 and d.active=1', $mbl->document_group);
         $documents = apply_filters($this->basename.'/get_document_import', $args);
         if(!$documents->status){
             return '';
@@ -97,13 +98,40 @@ class WP_Membership_Shortcodes
                 $name = substr($tmp->original, 0, strrpos($tmp->original,'.'));
             }
             $ext = preg_replace('/^.*\./', '', $tmp->original);
-            $html .= '<li class="membership-list"><a class="list-file file ext_'.$ext.'" 
+            if($tmp->beschreibung){
+                $popover = 'data-bs-trigger="hover focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="'.$tmp->beschreibung.'"';
+            } else {
+                $popover = '';
+            }
+            $html .= '<li class="membership-list"><a '.$popover.' class="list-file file ext_'.$ext.'" 
                       href="'.site_url().'?'.SECURITY_QUERY_GET.'='.SECURITY_DOCUMENT_QUERY_URI.'&id='.$base.'&type=download">
                       '.$name.'</a></li>';
         }
         $html .= '</ul></div>';
 
         echo $this->html_compress_template($html);
+        return ob_get_clean();
+    }
+
+    public function wp_membership_logout_shortcode($atts, $content, $tag)
+    {
+        $a = shortcode_atts(array(
+            "text" => __('Logout', 'wp-memberchip-login'),
+            'class' => ''
+        ), $atts);
+
+        ob_start();
+        $a['class'] ? $class = 'class="'.$a['class'].'"' : $class = '';
+        $settings = get_option($this->basename . '_settings');
+        if($settings['after_logout_page']){
+            $page = get_post((int)$settings['after_logout_page']);
+            $url = site_url().'/'.$page->post_name;
+        } else {
+            $url = site_url();
+        }
+        ?>
+          <a <?=$class?> href="<?=wp_logout_url( $url )?>"><?=$a['text']?></a>
+      <?php
         return ob_get_clean();
     }
 

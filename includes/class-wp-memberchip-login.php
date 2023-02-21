@@ -169,6 +169,7 @@ class Wp_Memberchip_Login {
 
         define("SECURITY_ERROR_QUERY_URI", 'err');
         define("SECURITY_QUERY_GET", 'security');
+        define("SECURITY_QUERY_LOGOUT", 'logout');
         define("SECURITY_DOCUMENT_QUERY_URI", '2QNBtN6MhJWTgum2GPh3');
         define("SECURITY_DOCUMENT_ADMIN_QUERY_URI", 'jfu@xmd7eqe1URC9tnh');
 
@@ -210,7 +211,7 @@ class Wp_Memberchip_Login {
             return $this->version;
         });
         $getDbVersion = new TwigFilter('dbVersion', function () {
-            return $this->version;
+            return $this->db_version;
         });
         $getOption = new TwigFilter('get_option', function ($option) {
             return get_option($option);
@@ -583,9 +584,11 @@ class Wp_Memberchip_Login {
      * @access   private
      */
     private function register_wp_membership_gutenberg_tools() {
-        $gbTools = new Register_WP_Membership_Gutenberg_Tools($this->version, $this->plugin_name, $this->main);
-        $this->loader->add_action('init', $gbTools, 'register_wp_membership_block_type');
-        $this->loader->add_action('enqueue_block_editor_assets', $gbTools, 'wp_membership_block_type_scripts');
+        if ( is_file( plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-memberchip-login-admin.php' ) ) {
+            $gbTools = new Register_WP_Membership_Gutenberg_Tools($this->version, $this->plugin_name, $this->main);
+            $this->loader->add_action('init', $gbTools, 'register_wp_membership_block_type');
+            $this->loader->add_action('enqueue_block_editor_assets', $gbTools, 'wp_membership_block_type_scripts');
+        }
 
     }
 

@@ -14,9 +14,9 @@
  *
  * @wordpress-plugin
  * Plugin Name:       WP-Membership
- * Plugin URI:        https://wwdh/plugins/wp-memberchip-login
+ * Plugin URI:        https://wwdh/plugins/wp-membership-login
  * Description:       WP Membership allows to create custom login boxes. Furthermore, an upload and download for protected documents is intigrated.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Jens Wiecker
  * Author URI:        https://wwdh.de
  * License:           GPL-2.0+
@@ -38,7 +38,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Plugin Database-Version.
  */
-const WP_MEMBERSHIP_LOGIN_DB_VERSION = '1.0.0';
+const WP_MEMBERSHIP_LOGIN_DB_VERSION = '1.0.1';
 /**
  * PHP minimum requirement for the plugin.
  */

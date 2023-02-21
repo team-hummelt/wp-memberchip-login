@@ -13,7 +13,12 @@ $green:#81c137;
 
 body .wp-membership-login {
   font-size: 1rem;
+  .dz-error-mark svg g g {
+    fill: #c00!important;
+  }
 }
+
+
 
 .flip-clock-wrapper {
   padding-top: 2.5rem;
@@ -56,6 +61,14 @@ body .wp-membership-login {
     transform: scale(1.06);
     color: rgb(64, 64, 64) !important;
   }
+}
+
+.form-floating>.form-control, .wp-membership-login .form-floating>.form-control-plaintext {
+  &:read-only {
+    background-color: #f1f1f1!important;
+    color: #a1a1a1!important;
+  }
+  padding: 1rem .75rem;
 }
 
 

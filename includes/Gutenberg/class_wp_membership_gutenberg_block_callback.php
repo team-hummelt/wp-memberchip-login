@@ -72,7 +72,13 @@ class WP_Membership_Gutenberg_Block_Callback
 
     private function render_login_template($stayLoggedIn, $membership, $username = ''): string
     {
-        $html = '<form name="loginform" id="loginform"  method="post">
+        $action = '';
+        if(!$membership['self_active']){
+           if($membership['login_link']){
+               $action = ' action="'.site_url().'/'.$membership['login_link'].'"';
+           }
+        }
+        $html = '<form name="loginform" id="loginform" '.$action.' method="post">
                      <div class="form-floating mb-2">
                             <input type="text" name="log" id="user_login" value="' . $username . '" autocomplete="username" size="20"
                                    autocapitalize="off" class="form-control" placeholder="name@example.com">

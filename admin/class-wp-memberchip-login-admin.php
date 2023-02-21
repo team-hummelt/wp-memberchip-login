@@ -113,8 +113,8 @@ class Wp_Memberchip_Login_Admin
 
         $hook_suffix = add_submenu_page(
             'membership-login',
-            __('Settings', 'wp-memberchip-login'),
-            __('Settings', 'wp-memberchip-login'),
+            __('Pages', 'wp-memberchip-login').' / '.__('Settings', 'wp-memberchip-login'),
+            __('Pages', 'wp-memberchip-login').' / '.__('Settings', 'wp-memberchip-login'),
             get_option($this->basename . '_settings')['plugin_min_role'],
             'membership-login',
             array($this, 'wp_membership_login_startseite'));
@@ -141,7 +141,7 @@ class Wp_Memberchip_Login_Admin
 
         add_action('load-' . $hook_suffix, array($this, 'wp_membership_login_load_ajax_admin_script'));
 
-        if(get_option($this->basename . '_settings')['show_dashboard_downloads']) {
+        if (get_option($this->basename . '_settings')['show_dashboard_downloads']) {
             $hook_suffix = add_menu_page(
                 __('Downloads', 'wp-memberchip-login'),
                 __('Downloads', 'wp-memberchip-login'),
@@ -158,9 +158,12 @@ class Wp_Memberchip_Login_Admin
 
     public function wp_membership_login_startseite()
     {
+        $pages = apply_filters($this->basename . '/get_theme_pages', '');
         $data = [
             'select' => $this->get_wp_membership_defaults('select_user_role'),
-            'sdb' => get_option($this->basename . '_settings')
+            'sdb' => get_option($this->basename . '_settings'),
+            'pages' => $pages,
+            'logout_url' =>html_entity_decode(wp_logout_url( site_url() ))
         ];
         try {
             $template = $this->twig->render('@templates/wp-membership-login-startseite.html.twig', $data);
@@ -188,9 +191,9 @@ class Wp_Memberchip_Login_Admin
     public function wp_membership_login_document_groups()
     {
         $groupData = [];
-        $groups = apply_filters($this->basename.'/get_document_groups', '');
-        if($groups->status) {
-            $groupData = (array) $groups->record;
+        $groups = apply_filters($this->basename . '/get_document_groups', '');
+        if ($groups->status) {
+            $groupData = (array)$groups->record;
         }
         $data = [
             'data' => $groupData
@@ -252,24 +255,33 @@ class Wp_Memberchip_Login_Admin
 
     function wp_membership_login_callback_trigger(): void
     {
+
+        $settings = get_option($this->basename . '_settings');
         if (get_query_var(SECURITY_QUERY_GET) == SECURITY_ERROR_QUERY_URI) {
-         include_once (plugin_dir_path( dirname( __FILE__ ) ) . 'includes/PageTemplates/security-page-cap-error.php');
-         exit();
+            if($settings['error_page']){
+                $page = get_post((int)$settings['error_page']);
+                @ob_flush();
+                @ob_end_flush();
+                @ob_end_clean();
+                wp_redirect(site_url().'/'.$page->post_name);
+               exit();
+            }
+            include_once(plugin_dir_path(dirname(__FILE__)) . 'includes/PageTemplates/security-page-cap-error.php');
+            exit();
         }
 
         if (get_query_var(SECURITY_QUERY_GET) == SECURITY_DOCUMENT_QUERY_URI) {
-            require(plugin_dir_path( dirname( __FILE__ ) ) . 'includes/PageTemplates/class_wp_membership_document_download.php');
+            require(plugin_dir_path(dirname(__FILE__)) . 'includes/PageTemplates/class_wp_membership_document_download.php');
             $download = WP_Membership_Document_Download::instance($this->basename, $this->main);
             $download->security_document_download();
             exit();
         }
         if (get_query_var(SECURITY_QUERY_GET) == SECURITY_DOCUMENT_ADMIN_QUERY_URI) {
-            require(plugin_dir_path( dirname( __FILE__ ) ) . 'includes/PageTemplates/class_wp_membership_document_admin_download.php');
+            require(plugin_dir_path(dirname(__FILE__)) . 'includes/PageTemplates/class_wp_membership_document_admin_download.php');
             $download = WP_Membership_Document_Admin_Download::instance($this->basename, $this->main);
             $download->security_document_admin_download();
             exit();
         }
-
     }
 
     /**
@@ -356,13 +368,13 @@ class Wp_Memberchip_Login_Admin
         //wp_enqueue_script($this->basename . '-bs-data-table', plugin_dir_url(__FILE__) . 'assets/js/tools/data-table/datatables.min.js', array(), $this->version, true);
         wp_enqueue_script($this->basename . '-tables', plugin_dir_url(__FILE__) . 'assets/js/wpMembershipTables.js', false, $this->version, true);
 
-        if($membership_current_screen->base == 'mitglieder_page_membership-login-documents'){
-            wp_enqueue_style($this->basename.'-admin-dropzone', plugin_dir_url(__FILE__) . '/assets/css/tools/dropzone.min.css', array(), $this->version, false);
+        if ($membership_current_screen->base == 'mitglieder_page_membership-login-documents') {
+            wp_enqueue_style($this->basename . '-admin-dropzone', plugin_dir_url(__FILE__) . '/assets/css/tools/dropzone.min.css', array(), $this->version, false);
             wp_enqueue_script($this->basename . '-dropzone', plugin_dir_url(__FILE__) . 'assets/js/tools/dropzone/dropzone.min.js', array(), $this->version, true);
             wp_enqueue_script($this->basename . '-dropzone-options', plugin_dir_url(__FILE__) . 'assets/js/tools/dropzone/dropzone-optionen.js', array(), $this->version, true);
         }
 
-        wp_enqueue_script($this->basename.'_global', plugin_dir_url(__FILE__) . 'assets/js/wp-membership-global.js', array('jquery'), $this->version, false);
+        wp_enqueue_script($this->basename . '_global', plugin_dir_url(__FILE__) . 'assets/js/wp-membership-global.js', array('jquery'), $this->version, false);
         wp_enqueue_script($this->basename, plugin_dir_url(__FILE__) . 'assets/js/wp-memberchip-login-admin.js', array('jquery'), $this->version, false);
     }
 
@@ -387,7 +399,7 @@ class Wp_Memberchip_Login_Admin
                           </svg>';
                 break;
             case'download':
-                 $icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                $icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                           <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                           <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                           </svg>';

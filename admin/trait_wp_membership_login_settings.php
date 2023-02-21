@@ -15,6 +15,10 @@ trait WP_Membership_Login_Settings {
     protected bool $show_dashboard_downloads = false;
     protected string $mimeTypes = 'pdf,svg,rar,zip,jpg,jpeg,png,gif,doc,docx';
     protected int $max_file_size = 10;
+    protected int $error_page = 0;
+    protected int $after_logout_page = 0;
+    protected int $check_mime_type_active = 1;
+    protected int $check_upload_size_active = 1;
 
     protected string $membership_template_datei = 'wp-membership.php';
     protected string $default_redirect_link = 'WP Member Security';
@@ -31,7 +35,11 @@ trait WP_Membership_Login_Settings {
                 'bootstrap_js_aktiv' => $this->bootstrap_js_aktiv,
                 'show_dashboard_downloads' => $this->show_dashboard_downloads,
                 'mime_types' => $this->mimeTypes,
-                'max_file_size' => $this->max_file_size
+                'max_file_size' => $this->max_file_size,
+                'error_page' => $this->error_page,
+                'after_logout_page' => $this->after_logout_page,
+                'check_mime_type_active' => $this->check_mime_type_active,
+                'check_upload_size_active' => $this->check_upload_size_active
             ],
             'select_user_role' => [
                 "0" => [
@@ -152,7 +160,14 @@ trait WP_Membership_Login_Settings {
             __('Uploaded documents', 'wp-memberchip-login'),
             __('Member Documents', 'wp-memberchip-login'),
             __('Groups', 'wp-memberchip-login'),
-            __('Add group', 'wp-memberchip-login')
+            __('Add group', 'wp-memberchip-login'),
+            __('Error page (no authorization)', 'wp-memberchip-login'),
+            __('Page after logout', 'wp-memberchip-login'),
+            __('Check MimeTypes', 'wp-memberchip-login'),
+            __('Check upload size', 'wp-memberchip-login'),
+            __('Logout Url', 'wp-memberchip-login'),
+            __('For the logout link there is a shortcode with different options.<br>Shortcode:<code>[mbl-logout text=logout class="your-css-class"]</code><br>text=link text', 'wp-memberchip-login'),
+
         ];
     }
 

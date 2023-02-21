@@ -12,7 +12,7 @@ get_header();
                         </header>
                         <div <?php post_class("entry-content") ?>>
                             <h4 class="text-center text-danger mt-5">
-                                Sie haben keine Berechtigung diese Seite aufzurufen.
+                                <?=__('You do not have permission to access this page.' ,'wp-memberchip-login')?>
                             </h4>
                         </div>
                         <footer <?php post_class("entry-footer") ?>>

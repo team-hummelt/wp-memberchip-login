@@ -159,6 +159,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     swal_fire_app_delete(formData, swal);
                     return false;
+                case'change-readonly':
+                    if($(this).prop('checked')){
+                        $(target).prop('readonly', false)
+                    } else {
+                        $(target).prop('readonly', true)
+                    }
+                    break;
             }
 
             if (formData) {

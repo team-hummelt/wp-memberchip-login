@@ -90,11 +90,47 @@ class WP_Membership_Admin_Ajax
         $download_min_role = filter_input(INPUT_POST, 'download_min_role', FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_HIGH);
         $mime_type = filter_input(INPUT_POST, 'mime_type', FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_HIGH);
         $max_file_size = filter_input(INPUT_POST, 'max_file_size', FILTER_VALIDATE_INT);
+
+        $error_page = filter_input(INPUT_POST, 'error_page', FILTER_VALIDATE_INT);
+        $after_logout_page = filter_input(INPUT_POST, 'after_logout_page', FILTER_VALIDATE_INT);
+
         filter_input(INPUT_POST, 'bootstrap_css_aktiv', FILTER_UNSAFE_RAW) ? $bootstrap_css_aktiv = 1 : $bootstrap_css_aktiv = 0;
         filter_input(INPUT_POST, 'bootstrap_js_aktiv', FILTER_UNSAFE_RAW) ? $bootstrap_js_aktiv = 1 : $bootstrap_js_aktiv = 0;
         filter_input(INPUT_POST, 'show_dashboard_downloads', FILTER_UNSAFE_RAW) ? $show_dashboard_downloads = 1 : $show_dashboard_downloads = 0;
 
+        filter_input(INPUT_POST, 'check_mime_type_active', FILTER_UNSAFE_RAW) ? $check_mime_type_active = 1 : $check_mime_type_active = 0;
+        filter_input(INPUT_POST, 'check_upload_size_active', FILTER_UNSAFE_RAW) ? $check_upload_size_active = 1 : $check_upload_size_active = 0;
+
         $settings = get_option($this->basename . '_settings');
+        $loginPage = [];
+        $mbs = apply_filters($this->basename.'/get_membership_login','');
+        if($mbs->status) {
+            foreach ($mbs->record as $tmp){
+                $loginPage[] = $tmp->page_id;
+            }
+        }
+        if( $error_page != 0 && $error_page != $settings['error_page']){
+            if($after_logout_page == $error_page) {
+                $this->responseJson->msg = __('The error page cannot be used.', 'wp-memberchip-login');
+                return $this->responseJson;
+            }
+        }
+        if(in_array($error_page, $loginPage)){
+            $this->responseJson->msg = __('The error page cannot be used.', 'wp-memberchip-login');
+            return $this->responseJson;
+        }
+        if( $after_logout_page != 0 && $after_logout_page != $settings['after_logout_page']){
+            if($after_logout_page == $error_page) {
+                $this->responseJson->msg = __('Page after logging out can not be used.', 'wp-memberchip-login');
+                return $this->responseJson;
+            }
+        }
+        if(in_array($after_logout_page, $loginPage)){
+            $this->responseJson->msg = __('Page after logging out can not be used.', 'wp-memberchip-login');
+            return $this->responseJson;
+        }
+
+
         $settings['plugin_min_role'] = $plugin_min_role;
         $settings['download_min_role'] = $download_min_role;
         $settings['bootstrap_css_aktiv'] = $bootstrap_css_aktiv;
@@ -102,6 +138,10 @@ class WP_Membership_Admin_Ajax
         $settings['show_dashboard_downloads'] = $show_dashboard_downloads;
         $settings['mime_types'] = $mime_type;
         $settings['max_file_size'] = (int)$max_file_size;
+        $settings['check_mime_type_active'] = $check_mime_type_active;
+        $settings['check_upload_size_active'] = $check_upload_size_active;
+        $settings['error_page'] = (int)$error_page;
+        $settings['after_logout_page'] = (int)$after_logout_page;
 
         update_option($this->basename . '_settings', $settings);
         $this->responseJson->status = true;
@@ -139,10 +179,50 @@ class WP_Membership_Admin_Ajax
         if ($groups->status) {
             $groupSelect = (array)$groups->record;
         }
+
+
+        $pageArr = [];
+        $pages = apply_filters($this->basename . '/get_theme_pages', '');
+        $settings = get_option($this->basename . '_settings');
+        if($pages){
+            foreach ($pages as $tmp){
+               if($settings['error_page'] == $tmp['id'] || $settings['after_logout_page'] == $tmp['id']){
+                   continue;
+               }
+                $pageArr[] = $tmp;
+            }
+        }
+
+        $pageIds=[];
+        if($handle == 'insert'){
+            $mbsData = apply_filters($this->basename . '/get_membership_login', '');
+            if(!$mbsData->status){
+                $this->responseJson->msg = __('Ajax transmission error.', 'wp-memberchip-login') . ' (Ajx - ' . __LINE__ . ')';
+                return $this->responseJson;
+            }
+            foreach ($mbsData->record as $tmp){
+                $pageIds[] = $tmp->page_id;
+            }
+            $insertArr = [];
+            foreach ($pageArr as $tmp){
+                if(in_array($tmp['id'], $pageIds)){
+                    continue;
+                }
+                $insertArr[] = $tmp;
+            }
+            $pageArr = $insertArr;
+
+        }
+
+        if(!$pageArr){
+            $this->responseJson->msg = __('New membership cannot be created.', 'wp-memberchip-login') . ' (Ajx - ' . __LINE__ . ')';
+            return $this->responseJson;
+        }
+
         $data = [
             'handle' => $handle,
             'd' => $tmpData,
-            'pages' => apply_filters($this->basename . '/get_theme_pages', ''),
+            'pages' => $pageArr,
             'groups' => $groupSelect,
             'cap' => $this->get_wp_membership_defaults('select_user_role')
         ];

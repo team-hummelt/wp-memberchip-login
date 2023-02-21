@@ -19,7 +19,8 @@
          <div id="collParent">
              <div id="colMembershipOverview" data-bs-parent="#collParent" class="collapse show">
                  <hr>
-                 <button data-target="#colMembershipHandle" data-parent="#collParent" data-handle="insert" data-type="wp_membership_template_handle"
+                 <button data-target="#colMembershipHandle" data-parent="#collParent" data-handle="insert"
+                         data-type="wp_membership_template_handle"
                          class="mbl-action btn btn-success">
                      <i class="bbi bi-node-plus me-1"></i>
                      {{ 'Add membership'|__ }}
@@ -98,6 +99,33 @@
                                      <label for="selectDownloadCapabilities">{{ 'User Role Downloads (Dashboard View)'|__ }}</label>
                                  </div>
                              </div>
+                             <div class="col-xl-6 col-12">
+                                 <div class="form-floating">
+                                     <select class="form-select no-blur mw-100" name="error_page" id="selectErrorPage"
+                                             aria-label="{{ 'Error page (no authorization)'|__ }}">
+                                         <option value="0">{{ 'select...'|__ }}</option>
+                                         {% for s in pages %}
+                                             <option value="{{ s.id }}"
+                                                     {% if sdb.error_page == s.id %}selected{% endif %}>{{ s.name }}</option>
+                                         {% endfor %}
+                                     </select>
+                                     <label for="selectErrorPage">{{ 'Error page (no authorization)'|__ }}</label>
+                                 </div>
+                             </div>
+                             <div class="col-xl-6 col-12">
+                                 <div class="form-floating">
+                                     <select class="form-select no-blur mw-100" name="after_logout_page"
+                                             id="selectErrorPage" aria-label="{{ 'Error page (no authorization)'|__ }}">
+                                         <option value="0">{{ 'select...'|__ }}</option>
+                                         {% for s in pages %}
+                                             <option value="{{ s.id }}"
+                                                     {% if sdb.after_logout_page == s.id %}selected{% endif %}>{{ s.name }}</option>
+                                         {% endfor %}
+                                     </select>
+                                     <label for="selectErrorPage">{{ 'Page after logout'|__ }} <sup class="text-danger">(1)</sup></label>
+                                 </div>
+                                 {#  <div class="form-text">{{ 'Logout Url'|__ }}: <i>{{ logout_url }}</i> <sup class="fw-semibold text-danger">(1)</sup></div>#}
+                             </div>
                              <div class="col-12">
                                  <div class="d-flex flex-wrap">
                                      <div class="form-check form-switch my-1 me-5">
@@ -138,7 +166,8 @@
                                  <div class="form-floating">
                                      <input name="mime_type" type="text" value="{{ sdb.mime_types }}"
                                             class="form-control no-blur" id="inputMimeTypes"
-                                            placeholder="{{ 'Allowed documents'|__ }}">
+                                            placeholder="{{ 'Allowed documents'|__ }}"
+                                            {% if not sdb.check_mime_type_active %}readonly{% endif %}>
                                      <label for="inputMimeTypes">{{ 'Allowed documents'|__ }}</label>
                                  </div>
                                  <div class="form-text">
@@ -149,8 +178,38 @@
                                  <div class="form-floating">
                                      <input name="max_file_size" type="number" min="0" value="{{ sdb.max_file_size }}"
                                             class="form-control no-blur" id="inputFileSize"
-                                            placeholder="{{ 'Maximum file size (MB)'|__ }}">
+                                            placeholder="{{ 'Maximum file size (MB)'|__ }}"
+                                            {% if not sdb.check_upload_size_active %}readonly{% endif %}>
                                      <label for="inputFileSize">{{ 'Maximum file size (MB)'|__ }}</label>
+                                 </div>
+                             </div>
+                             <div class="col-12">
+                                 <div class="d-flex flex-wrap">
+                                     <div class="form-check form-switch me-5 my-1">
+                                         <input data-type="change-readonly" data-target="#inputMimeTypes"
+                                                name="check_mime_type_active"
+                                                class="mbl-action form-check-input no-blur"
+                                                type="checkbox" role="switch"
+                                                id="checkShowMimeTypesActive"
+                                                {% if sdb.check_mime_type_active %}checked{% endif %}>
+                                         <label class="form-check-label"
+                                                for="checkShowMimeTypesActive">{{ 'Check MimeTypes'|__ }}</label>
+                                     </div>
+                                     <div class="form-check form-switch me-5 my-1">
+                                         <input data-type="change-readonly" data-target="#inputFileSize"
+                                                name="check_upload_size_active"
+                                                class="mbl-action form-check-input no-blur"
+                                                type="checkbox" role="switch"
+                                                id="checkShowUploadSizeActive"
+                                                {% if sdb.check_upload_size_active %}checked{% endif %}>
+                                         <label class="form-check-label"
+                                                for="checkShowUploadSizeActive">{{ 'Check upload size'|__ }}</label>
+                                     </div>
+                                 </div>
+                                 <hr>
+                                 <div class="form-text">
+                                     <span class="text-danger">(1)</span>
+                                    {% autoescape false%} {{ 'For the logout link there is a shortcode with different options.<br>Shortcode:<code>[mbl-logout text=logout class="your-css-class"]</code><br>text=link text'|__ }} {% endautoescape %}
                                  </div>
                              </div>
                          </div>

@@ -72,11 +72,17 @@ class WP_Membership_Login_Security_Handle
                 $pages = $pages->record;
                 if (!is_admin()) {
                     if (!is_user_logged_in()) {
+                        $settings = get_option($this->basename . '_settings');
+                        if($settings['error_page']){
+                            $page = get_post((int)$settings['error_page']);
+                            $url = site_url().'/'.$page->post_name;
+                        } else {
+                            $url = wp_login_url();
+                        }
                         @ob_flush();
                         @ob_end_flush();
                         @ob_end_clean();
-                        //wp_redirect(site_url().'?err=1');
-                        wp_redirect(wp_login_url());
+                        wp_redirect($url);
                         exit();
                     }
                     $capabilities = $this->fn_child_check_user_capabilities($pages->capabilities);
@@ -92,20 +98,6 @@ class WP_Membership_Login_Security_Handle
             }
         }
     }
-
-    public function wp_membership_signon_login($user, $password, $remember) {
-        $credentials = array(
-            'user_login'    => $user,
-            'user_password' => $password,
-            'remember'      => $remember
-        );
-
-      /*  $user = wp_signon( $credentials, is_ssl() );
-        if ( is_wp_error( $user ) ) {
-            echo $user->get_error_message();
-        }*/
-    }
-
 
     public function fn_wp_membership_login_public_enqueue_styles()
     {
